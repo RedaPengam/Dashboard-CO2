@@ -1,17 +1,20 @@
 import './App.css';
-import Board from './components/Board.jsx'
-import Navigation from './components/Navigation.jsx'
-import React, { useState, useEffect } from 'react';
+import Body from './components/Body';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export default function App() {
   return (
-    <div className="App">
-
-    {/* routes de navigation de l'app */}
-    
-    <Navigation/>
-    <Board/>
-
+    <div className="App">    
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route exact path="/" element={Body("Home")} />
+        <Route exact path="/computer" element={Body("💻 Ordinateur")} />
+        <Route exact path="/smartphone" element={Body("📱 Smartphone")} />
+        <Route exact path="/screen" element={Body("🖥 Ecran")} />
+      </Routes>
+    </Router>
     </div>
   );
 }
